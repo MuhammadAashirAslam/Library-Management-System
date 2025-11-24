@@ -11,12 +11,12 @@
 class User 
 {
 private:
-    std::string userId;
-    std::string name;
-    std::string email;
-    std::string phone;
-    int booksBorrowedCount;
-    std::vector<std::string> borrowedBooksISBNs;
+    std::string userId ;
+    std::string name ;
+    std::string email ;
+    std::string phone ; 
+    int booksBorrowedCount ;
+    std::vector<std::string> borrowedBooksISBNs ;
 
 public:
     // Default constructor
@@ -30,10 +30,26 @@ public:
         : userId(userId), name(name), email(email), phone(phone), booksBorrowedCount(0) {}
 
     // Getters
-    std::string getUserId() const { return userId;}
-    std::string getName() const { return name; }
-    std::string getEmail() const { return email;}
-    std::string getPhone() const { return phone; }
+    std::string getUserId() const 
+    {
+        return userId ;
+    }
+
+    std::string getName() const 
+    { 
+        return name ; 
+    }
+    
+    std::string getEmail() const 
+    { 
+        return email ; 
+    }
+    
+    std::string getPhone() const 
+    { 
+        return phone ;  
+    }
+
     int getBooksBorrowedCount() const { return booksBorrowedCount; }
     const std::vector<std::string>& getBorrowedBooksISBNs() const return borrowedBooksISBNs; }
 
