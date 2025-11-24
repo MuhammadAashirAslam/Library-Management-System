@@ -8,12 +8,13 @@
 #include <chrono>
 #include <ctime>
 
-class Transaction {
+class Transaction 
+{
 private:
     std::string transactionId;
     std::string userId;
     std::string bookISBN;
-    std::string transactionType; // "BORROW" or "RETURN"
+    std::string transactionType; 
     std::string timestamp;
 
 public:
@@ -59,7 +60,6 @@ public:
     bool isReturnTransaction() const {
         return transactionType == "RETURN";
     }
-
     // File I/O operations
     void writeToFile(std::ofstream& file) const {
         if (file.is_open()) {
@@ -118,10 +118,10 @@ public:
     // Display method
     void display() const {
         std::cout << "Transaction ID: " << transactionId << "\n"
-                  << "User ID: " << userId << "\n"
-                  << "Book ISBN: " << bookISBN << "\n"
-                  << "Transaction Type: " << transactionType << "\n"
-                  << "Timestamp: " << timestamp << "\n";
+                  << "User ID: " << userId << "\n "
+                  << "Book ISBN: " << bookISBN << "\n "
+                  << "Transaction Type: " << transactionType << "\n "
+                  << "Timestamp: " << timestamp << "\n ";
     }
 
     // JSON-like string representation for frontend
