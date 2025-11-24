@@ -5,7 +5,8 @@
 #include "Book.h"
 
 // Specialized Doubly Linked List for Books
-class BookList : public DoublyLinkedList<Book> {
+class BookList : public DoublyLinkedList<Book>
+{
 public:
     bool deleteByISBN(const std::string& isbn) {
         return deleteById(isbn);
@@ -20,8 +21,8 @@ public:
     }
 
     std::vector<Book> findByTitle(const std::string& searchTerm) {
-        return findByTitleOrName(searchTerm);
+        return findByTitleOrName(searchTerm) ;
     }
 };
 
-#endif // BOOKLIST_H
+#endif 
