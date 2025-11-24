@@ -6,7 +6,8 @@
 #include <string>
 #include <sstream>
 
-class Book {
+class Book 
+{
 private:
     std::string isbn;
     std::string title;
@@ -43,7 +44,7 @@ public:
     void setPublicationYear(int year) { this->publicationYear = year; }
     void setTotalCopies(int copies) { 
         this->totalCopies = copies; 
-        this->availableCopies = copies; // Reset available copies to total when setting total
+        this->availableCopies = copies ; 
     }
 
     // Book-specific operations
@@ -128,12 +129,12 @@ public:
 
     // Display method
     void display() const {
-        std::cout << "ISBN: " << isbn << "\n"
-                  << "Title: " << title << "\n"
-                  << "Author: " << author << "\n"
-                  << "Publication Year: " << publicationYear << "\n"
-                  << "Available Copies: " << availableCopies << "/" << totalCopies << "\n"
-                  << "Status: " << (isAvailable() ? "Available" : "Not Available") << "\n";
+        std::cout << "ISBN:. " << isbn << "\n"
+                  << "Title:. " << title << "\n"
+                  << "Author:. " << author << "\n"
+                  << "Publication Year:. " << publicationYear << "\n"
+                  << "Available Copies:. " << availableCopies << "/" << totalCopies << "\n"
+                  << "Status:. " << (isAvailable() ? "Available" : "Not Available") << "\n" ;
     }
 
     // JSON-like string representation for frontend
