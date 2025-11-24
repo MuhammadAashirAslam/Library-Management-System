@@ -28,9 +28,12 @@ public:
     // Basic operations
     void insertAtHead(const T& data) {
         Node<T>* newNode = new Node<T>(data);
+        
         if (head == nullptr) {
             head = tail = newNode;
-        } else {
+        } 
+        
+        else {
             newNode->setNext(head);
             head->setPrev(newNode);
             head = newNode;
@@ -40,9 +43,12 @@ public:
 
     void insertAtTail(const T& data) {
         Node<T>* newNode = new Node<T>(data);
+        
         if (tail == nullptr) {
             head = tail = newNode;
-        } else {
+        } 
+        
+        else {
             tail->setNext(newNode);
             newNode->setPrev(tail);
             tail = newNode;
@@ -57,14 +63,18 @@ public:
                 // Found the node to delete
                 if (current->getPrev() != nullptr) {
                     current->getPrev()->setNext(current->getNext());
-                } else {
+                } 
+                
+                else {
                     // Deleting head
                     head = current->getNext();
                 }
 
                 if (current->getNext() != nullptr) {
                     current->getNext()->setPrev(current->getPrev());
-                } else {
+                } 
+                
+                else {
                     // Deleting tail
                     tail = current->getPrev();
                 }
@@ -73,7 +83,7 @@ public:
                 size--;
                 return true;
             }
-            current = current->getNext();
+            current = current -> getNext();
         }
         return false;
     }
@@ -99,7 +109,7 @@ public:
             if (titleOrName.find(lowerSearch) != std::string::npos) {
                 results.push_back(current->getData());
             }
-            current = current->getNext();
+            current = current -> getNext();
         }
         return results;
     }
@@ -132,8 +142,8 @@ public:
     }
 
     std::vector<T> getAllData() const {
-        std::vector<T> data;
-        Node<T>* current = head;
+        std::vector<T> data ;
+        Node<T>* current = head ;
         while (current != nullptr) {
             data.push_back(current->getData());
             current = current->getNext();
@@ -142,13 +152,13 @@ public:
     }
 
     void clear() {
-        Node<T>* current = head;
+        Node<T>* current = head ;
         while (current != nullptr) {
             Node<T>* next = current->getNext();
             delete current;
             current = next;
         }
-        head = tail = nullptr;
+        head = tail = nullptr ;
         size = 0;
     }
 
@@ -162,36 +172,36 @@ public:
 
     // Merge Sort implementation for O(N log N) complexity
     void mergeSort() {
-        head = mergeSort(head);
+        head = mergeSort(head) ;
         // Update tail
         tail = head;
         while (tail != nullptr && tail->getNext() != nullptr) {
-            tail = tail->getNext();
+            tail = tail->getNext() ;
         }
     }
 
     // File I/O operations
     void saveToFile(const std::string& filename) const {
-        std::ofstream file(filename);
+        std::ofstream file(filename) ;
         if (file.is_open()) {
-            Node<T>* current = head;
+            Node<T>* current = head ;
             while (current != nullptr) {
-                current->writeToFile(file);
-                current = current->getNext();
+                current->writeToFile(file) ;
+                current = current->getNext() ;
             }
             file.close();
         }
     }
 
     void loadFromFile(const std::string& filename) {
-        std::ifstream file(filename);
+        std::ifstream file(filename) ;
         if (file.is_open()) {
-            clear();
-            T data;
+            clear() ;
+            T data ;
             while (data.readFromFile(file)) {
-                insertAtTail(data);
+                insertAtTail(data) ;
             }
-            file.close();
+            file.close() ;
         }
     }
 
@@ -199,7 +209,7 @@ private:
     std::string toLower(const std::string& str) const {
         std::string result = str;
         for (char& c : result) {
-            c = std::tolower(c);
+            c = std::tolower(c) ;
         }
         return result;
     }
@@ -211,25 +221,25 @@ private:
         }
 
         // Split the list into two halves
-        Node<T>* second = split(head);
+        Node<T>* second = split(head) ;
 
         // Recursively sort both halves
-        head = mergeSort(head);
-        second = mergeSort(second);
+        head = mergeSort(head) ;
+        second = mergeSort(second) ; 
 
         // Merge the sorted halves
-        return merge(head, second);
+        return merge(head, second) ;
     }
 
     Node<T>* split(Node<T>* head) {
-        Node<T>* fast = head;
-        Node<T>* slow = head;
-        Node<T>* prev = nullptr;
+        Node<T>* fast = head ;
+        Node<T>* slow = head ;
+        Node<T>* prev = nullptr ;
 
         while (fast != nullptr && fast->getNext() != nullptr) {
-            prev = slow;
-            slow = slow->getNext();
-            fast = fast->getNext()->getNext();
+            prev = slow ;
+            slow = slow -> getNext() ;
+            fast = fast -> getNext() -> getNext() ;
         }
 
         if (prev != nullptr) {
@@ -240,21 +250,29 @@ private:
     }
 
     Node<T>* merge(Node<T>* first, Node<T>* second) {
-        if (first == nullptr) return second;
-        if (second == nullptr) return first;
+        if (first == nullptr) 
+            return second;
+        if (second == nullptr) 
+            return first;
 
         if (first->getData() < second->getData()) {
             first->setNext(merge(first->getNext(), second));
+            
             if (first->getNext() != nullptr) {
                 first->getNext()->setPrev(first);
             }
+            
             first->setPrev(nullptr);
             return first;
-        } else {
+        } 
+        
+        else {
             second->setNext(merge(first, second->getNext()));
+            
             if (second->getNext() != nullptr) {
                 second->getNext()->setPrev(second);
             }
+            
             second->setPrev(nullptr);
             return second;
         }
@@ -391,58 +409,58 @@ public:
 
     // Insertion sort for transactions (since they're mostly append-only)
     void insertionSort() {
-        if (head == nullptr || head->getNext() == nullptr) return;
+        if (head == nullptr || head->getNext() == nullptr) return ;
 
-        SLLNode<T>* sorted = nullptr;
-        SLLNode<T>* current = head;
+        SLLNode<T>* sorted = nullptr ;
+        SLLNode<T>* current = head ;
 
         while (current != nullptr) {
-            SLLNode<T>* next = current->getNext();
-            sortedInsert(current, sorted);
-            current = next;
+            SLLNode<T>* next = current->getNext() ;
+            sortedInsert(current, sorted) ;
+            current = next ;
         }
 
-        head = sorted;
+        head = sorted ;
     }
 
     // File I/O operations
     void saveToFile(const std::string& filename) const {
-        std::ofstream file(filename);
+        std::ofstream file(filename) ;
         if (file.is_open()) {
-            SLLNode<T>* current = head;
+            SLLNode<T>* current = head ;
             while (current != nullptr) {
-                current->writeToFile(file);
-                current = current->getNext();
+                current->writeToFile(file) ;
+                current = current->getNext() ;
             }
-            file.close();
+            file.close() ;
         }
     }
 
     void loadFromFile(const std::string& filename) {
         std::ifstream file(filename);
         if (file.is_open()) {
-            clear();
-            T data;
+            clear() ;
+            T data ;
             while (data.readFromFile(file)) {
-                insertAtTail(data);
+                insertAtTail(data) ;
             }
-            file.close();
+            file.close() ;
         }
     }
 
 private:
     void sortedInsert(SLLNode<T>* newNode, SLLNode<T>*& sorted) {
-        if (sorted == nullptr || newNode->getData() < sorted->getData()) {
-            newNode->setNext(sorted);
-            sorted = newNode;
+        if (sorted == nullptr || newNode -> getData() < sorted -> getData()) {
+            newNode->setNext(sorted) ;
+            sorted = newNode ;
         } else {
             SLLNode<T>* current = sorted;
             while (current->getNext() != nullptr && 
-                   !(newNode->getData() < current->getNext()->getData())) {
-                current = current->getNext();
+                   !(newNode -> getData() < current -> getNext() -> getData() ) ) {
+                current = current -> getNext();
             }
-            newNode->setNext(current->getNext());
-            current->setNext(newNode);
+            newNode -> setNext(current -> getNext());
+            current -> setNext(newNode);
         }
     }
 };
