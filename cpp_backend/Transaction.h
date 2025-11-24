@@ -45,7 +45,7 @@ public:
     std::string getTimestamp() const { return timestamp; }
 
     // Setters
-    void setTransactionId(const std::string& transactionId) { this->transactionId = transactionId; }
+    void setTransactionId(const std::string& transactionId) { this -> transactionId = transactionId; }
     void setUserId(const std::string& userId) { this->userId = userId; }
     void setBookISBN(const std::string& bookISBN) { this->bookISBN = bookISBN; }
     void setTransactionType(const std::string& transactionType) { 
@@ -82,20 +82,30 @@ public:
             std::string token;
             
             // Parse CSV format: transactionId,userId,bookISBN,transactionType,timestamp
-            if (std::getline(ss, token, ',')) transactionId = token;
-            else return false;
+            if ( std::getline(ss, token, ',') ) 
+                transactionId = token;
+            else 
+                return false;
             
-            if (std::getline(ss, token, ',')) userId = token;
-            else return false;
+            if ( std::getline(ss, token, ',') ) 
+                userId = token;
+            else 
+                return false;
             
-            if (std::getline(ss, token, ',')) bookISBN = token;
-            else return false;
+            if ( std::getline(ss, token, ',') ) 
+                bookISBN = token;
+            else 
+                return false;
             
-            if (std::getline(ss, token, ',')) transactionType = token;
-            else return false;
+            if ( std::getline(ss, token, ',') ) 
+                transactionType = token;
+            else 
+                return false;
             
-            if (std::getline(ss, token, ',')) timestamp = token;
-            else return false;
+            if ( std::getline(ss, token, ',') ) 
+                timestamp = token;
+            else 
+                return false;
             
             return true;
         }
@@ -103,15 +113,15 @@ public:
     }
 
     // Comparison operators for sorting (by timestamp, newest first)
-    bool operator<(const Transaction& other) const {
+    bool operator < (const Transaction& other) const {
         return timestamp > other.timestamp; // Reverse for newest first
     }
 
-    bool operator>(const Transaction& other) const {
+    bool operator > (const Transaction& other) const {
         return timestamp < other.timestamp; // Reverse for newest first
     }
 
-    bool operator==(const Transaction& other) const {
+    bool operator == (const Transaction& other) const {
         return transactionId == other.transactionId; // transactionId is unique identifier
     }
 
