@@ -11,7 +11,8 @@
 #include "BookList.h"
 #include "UserList.h"
 
-class LibrarySystem {
+class LibrarySystem 
+{
 private:
     BookList books;
     UserList users;
@@ -35,7 +36,6 @@ public:
     // Book operations
     bool addBook(const std::string& isbn, const std::string& title, const std::string& author, 
                  int publicationYear, int totalCopies) {
-        // Check if book already exists
         if (books.findByISBN(isbn) != nullptr) {
             std::cout << "Book with ISBN " << isbn << " already exists.\n";
             return false;
@@ -108,7 +108,7 @@ public:
     }
 
     // User operations
-    bool addUser(const std::string& userId, const std::string& name, const std::string& email, const std::string& phone) {
+    bool addUser(const std::string& userId,const std::string& name, const std::string& email, const std::string& phone) {
         // Check if user already exists
         if (users.findByUserId(userId) != nullptr) {
             std::cout << "User with ID " << userId << " already exists.\n";
@@ -148,7 +148,7 @@ public:
             user->setEmail(email);
             user->setPhone(phone);
             saveData();
-            std::cout << "User updated successfully.\n";
+            std::cout << "User updated successfully.\n" ;
             return true;
         } else {
             std::cout << "User with ID " << userId << " not found.\n";
@@ -241,7 +241,7 @@ public:
             return true;
         }
 
-        return false;
+        return false ;
     }
 
     std::vector<Transaction> getUserTransactions(const std::string& userId) {
@@ -497,7 +497,7 @@ int main(int argc, char* argv[]) {
 
     } catch (const std::exception& e) {
         std::cout << "Error: " << e.what() << "\n";
-        return 1;
+        return 1 ;
     }
 
     return 0;
