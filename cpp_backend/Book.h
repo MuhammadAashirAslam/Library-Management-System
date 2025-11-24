@@ -9,12 +9,12 @@
 class Book 
 {
 private:
-    std::string isbn;
-    std::string title;
-    std::string author;
-    int publicationYear;
-    int availableCopies;
-    int totalCopies;
+    std::string isbn ;
+    std::string title ;
+    std::string author ;
+    int publicationYear ;
+    int availableCopies ;
+    int totalCopies ;
 
 public:
     // Default constructor
@@ -30,42 +30,69 @@ public:
           availableCopies(totalCopies), totalCopies(totalCopies) {}
 
     // Getters
-    std::string getISBN() const { return isbn; }
-    std::string getTitle() const { return title; }
-    std::string getAuthor() const { return author; }
-    int getPublicationYear() const { return publicationYear; }
-    int getAvailableCopies() const { return availableCopies; }
-    int getTotalCopies() const { return totalCopies; }
+    std::string getISBN() const { 
+        return isbn ; 
+    }
+    std::string getTitle() const { 
+        return title ; 
+    }
+    std::string getAuthor() const { 
+        return author ; 
+    }
+    
+    int getPublicationYear() const { 
+        return publicationYear ; 
+    }
+
+    int getAvailableCopies() const { 
+        return availableCopies ; 
+    }
+    
+    int getTotalCopies() const { 
+        return totalCopies ; 
+    }
 
     // Setters
-    void setISBN(const std::string& isbn) { this->isbn = isbn; }
-    void setTitle(const std::string& title) { this->title = title; }
-    void setAuthor(const std::string& author) { this->author = author; }
-    void setPublicationYear(int year) { this->publicationYear = year; }
+    void setISBN(const std::string& isbn) { 
+        this -> isbn = isbn ; 
+    }
+    
+    void setTitle(const std::string& title) { 
+        this -> title = title ; 
+    }
+    
+    void setAuthor(const std::string& author) { 
+        this -> author = author ; 
+    }
+
+    void setPublicationYear(int year) { 
+        this -> publicationYear = year ; 
+    }
+
     void setTotalCopies(int copies) { 
-        this->totalCopies = copies; 
-        this->availableCopies = copies ; 
+        this -> totalCopies = copies; 
+        this -> availableCopies = copies ; 
     }
 
     // Book-specific operations
     bool borrowBook() {
         if (availableCopies > 0) {
-            availableCopies--;
-            return true;
+            availableCopies-- ;
+            return true ;
         }
-        return false;
+        return false ;
     }
 
     bool returnBook() {
         if (availableCopies < totalCopies) {
-            availableCopies++;
-            return true;
+            availableCopies++ ;
+            return true ;
         }
-        return false;
+        return false ;
     }
 
     bool isAvailable() const {
-        return availableCopies > 0;
+        return availableCopies > 0 ;
     }
 
     // File I/O operations
