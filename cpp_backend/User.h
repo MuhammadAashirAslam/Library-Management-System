@@ -8,14 +8,15 @@
 #include <vector>
 #include <cctype>
 
-class User {
+class User 
+{
 private:
     std::string userId;
     std::string name;
     std::string email;
     std::string phone;
     int booksBorrowedCount;
-    std::vector<std::string> borrowedBooksISBNs; // Store ISBNs of borrowed books
+    std::vector<std::string> borrowedBooksISBNs;
 
 public:
     // Default constructor
@@ -29,12 +30,12 @@ public:
         : userId(userId), name(name), email(email), phone(phone), booksBorrowedCount(0) {}
 
     // Getters
-    std::string getUserId() const { return userId; }
+    std::string getUserId() const { return userId;}
     std::string getName() const { return name; }
-    std::string getEmail() const { return email; }
+    std::string getEmail() const { return email;}
     std::string getPhone() const { return phone; }
     int getBooksBorrowedCount() const { return booksBorrowedCount; }
-    const std::vector<std::string>& getBorrowedBooksISBNs() const { return borrowedBooksISBNs; }
+    const std::vector<std::string>& getBorrowedBooksISBNs() const return borrowedBooksISBNs; }
 
     // Setters
     void setUserId(const std::string& userId) { this->userId = userId; }
@@ -50,7 +51,7 @@ public:
     bool borrowBook(const std::string& isbn) {
         if (canBorrowBook() && booksBorrowedCount < 5) {
             borrowedBooksISBNs.push_back(isbn);
-            booksBorrowedCount++;
+            booksBorrowedCount++ ;
             return true;
         }
         return false;
@@ -199,4 +200,4 @@ public:
 
 };
 
-#endif // USER_H
+#endif 
